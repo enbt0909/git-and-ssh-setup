@@ -6,7 +6,5 @@ backup
 .env.test.local
 .env.production.local
 
-index.html
-index.js
-style.css
+backup1
 
