@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git und SSH-Schlüssel Einrichtung | Juni 2024</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header>
+        <h1>SSH-Schlüssel Einrichtung</h1>
+    </header>
+    <main>
+      <section>
+        <h2>
+          SSH-Schlüssel für GitHub einrichten
+        </h2>
+
+        <div class="tab">
+          <button
+            class="tablinks"
+            onclick="agentSSH(event, 'sshGenerate')" id="defaultOpen">
+            SSH generieren
+          </button>
+
+          <button class="tablinks" onclick="agentSSH(event, 'sshAgent')">
+            SSH-Agent
+          </button>
+
+          <button class="tablinks" onclick="agentSSH(event, 'ssh-github')">
+            SSH-Schlüssel GitHub
+          </button>
+        </div>
+
+        <div id="sshGenerate" class="tabcontent">
+          <h3>SSH-Schlüssel generieren:</h3>
+          <p>
+            - Öffnen Sie ein Terminal. - Geben Sie den Befehl `ssh-keygen -t rsa
+            -b 4096 -C "Ihre_Email@example.com"` oder `ssh-keygen -t ed25519 -C
+            "Ihre_Email@example.com"` ein, ersetzen Sie dabei
+            `"Ihre_Email@example.com"` mit Ihrer E-Mail-Adresse, die mit Ihrem
+            GitHub-Konto verknüpft ist. - Folgen Sie den Anweisungen, um den
+            Schlüssel zu generieren. Sie können eine Passphrase hinzufügen oder
+            einfach Enter drücken, um keine zu setzen.
+          </p>
+        </div>
+
+        <div id="sshAgent" class="tabcontent">
+          <h3>SSH-Agent starten und SSH-Schlüssel hinzufügen</h3>
+          <p>
+            - Starten Sie den SSH-Agent im Hintergrund mit dem Befehl `eval
+            "$(ssh-agent -s)"`. Dies startet den SSH-Agenten, der Ihre
+            SSH-Schlüssel verwaltet und im Hintergrund läuft. - Wenn Sie einen
+            RSA-Schlüssel generiert haben, verwenden Sie den Befehl ssh-add
+            ~/.ssh/id_rsa. - Wenn Sie stattdessen einen ED25519-Schlüssel
+            generiert haben, verwenden Sie den Befehl ssh-add ~/.ssh/id_ed25519.
+          </p>
+          <p>
+            Durch das Hinzufügen Ihres SSH-Schlüssels zum SSH-Agenten wird
+            sichergestellt, dass Ihr Schlüssel automatisch verwendet wird, wenn
+            Sie eine SSH-Verbindung zu GitHub (oder anderen Diensten, die SSH
+            verwenden) herstellen, ohne dass Sie jedes Mal Ihr Passwort oder
+            Ihren Schlüssel manuell eingeben müssen.
+          </p>
+        </div>
+
+        <div id="ssh-github" class="tabcontent">
+          <h3>SSH GitHub</h3>
+          <p>
+            - Kopieren Sie Ihren öffentlichen SSH-Schlüssel in die
+            Zwischenablage. Unter Linux können Sie dies mit `xclip -sel clip <
+            ~/.ssh/id_rsa.pub` oder `xclip -sel clip < ~/.ssh/id_rsa.pub` tun.
+            Falls `xclip` nicht installiert ist, können Sie es mit `sudo apt-get
+            install xclip` installieren oder den Inhalt der Datei
+            `~/.ssh/id_rsa.pub` oder `~/.ssh/id_rsa.pub` mit einem Texteditor
+            öffnen und manuell kopieren. - Gehen Sie zu GitHub und melden Sie
+            sich an. - Klicken Sie auf Ihr Profilbild in der oberen rechten Ecke
+            und wählen Sie „Settings“ (Einstellungen). - Wählen Sie im
+            Benutzermenü auf der linken Seite „SSH and GPG keys“. - Klicken Sie
+            auf „New SSH key“ oder „Add SSH key“. - Fügen Sie im Feld „Title“
+            einen beschreibenden Namen für Ihren Schlüssel ein. - Fügen Sie
+            Ihren Schlüssel in das Feld „Key“ ein. - Klicken Sie auf „Add SSH
+            key“.
+          </p>
+          <p>
+            Nachdem Sie diese Schritte ausgeführt haben, ist Ihr SSH-Schlüssel
+            Ihrem GitHub-Konto hinzugefügt, und Sie können über SSH mit Ihren
+            Repositories kommunizieren.
+          </p>
+          <p>
+            Um die Verbindung zu GitHub über SSH zu testen, können Sie den
+            folgenden Befehl in Ihrem Terminal ausführen: ```bash ssh -T
+            git@github.com ```
+          </p>
+          <p>
+            Dieser Befehl versucht, eine SSH-Verbindung zum GitHub-Server
+            herzustellen. Wenn Ihre SSH-Schlüssel korrekt eingerichtet sind und
+            zu Ihrem GitHub-Konto hinzugefügt wurden, sollten Sie eine Nachricht
+            ähnlich der folgenden sehen:
+          </p>
+          <p>
+            ``` Hi username! You've successfully authenticated, but GitHub does
+            not provide shell access. ```
+          </p>
+          <p>
+            Ersetzen Sie `username` durch Ihren tatsächlichen
+            GitHub-Benutzernamen. Diese Nachricht bestätigt, dass Ihre
+            SSH-Verbindung erfolgreich eingerichtet wurde. GitHub bietet keinen
+            Shell-Zugriff, daher ist die Meldung, dass kein Shell-Zugriff
+            bereitgestellt wird, normal und erwartet.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 by <span>
+          <a href="https://www.linkedin.com/in/eugen-beirit-7b5390290/">Eugen Beirit
+            <img src="./img/linkedin.svg" alt="Linkedin Profil" /></a>
+      </span></p>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>

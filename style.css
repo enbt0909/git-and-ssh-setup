@@ -1,0 +1,126 @@
+:root {
+  --font-size: 62.5%;
+
+  --color-green: #4CAF50;
+  --color-blue-dark: #0a66c2;
+  --bg-color: #f1f1f1;
+  --text-color: #333;
+  --color-grey: #ccc;
+  --color-black: black;
+  --color-light-grey: #ddd;
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box
+}
+
+body {
+  height: 100%;
+  font-family: "Lato", sans-serif;
+  font-size: calc(var(--font-size) * 1.6);
+  background: var(--bg-color);
+}
+
+header,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  padding: 0 1.5rem;
+  font-size: calc(var(--font-size) * 2);
+  color: var(--color-light-grey);
+  background: var(--color-blue-dark);
+}
+
+@media (max-width: 76.8rem) {
+  header,
+  footer {
+    font-size: calc(var(--font-size) * 1.5);
+  }
+}
+
+h2 {
+  font-size: calc(var(--font-size) * 2.5);
+  color: var(--color-blue-dark);
+}
+
+h2,
+h3 {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-light-grey);
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.tab {
+  float: left;
+  border: .1rem solid var(--border-color);
+  background-color: var(--bg-color);
+  width: 30%;
+}
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: var(--color-black);
+  padding: 2.2rem 1.6rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+  font-size: calc(var(--font-size) * 1.7);
+}
+
+.tab button:hover {
+  box-shadow: inset 0 0 0 0.1rem var(--color-grey);
+  background: var(--color-grey);
+  border-radius: .5rem 0 0 .5rem;
+}
+
+.tab button.active {
+  background: var(--color-green);
+  border-radius: 10rem;
+  text-align: center;
+}
+
+.tab,
+.tabcontent {
+  min-height: 50vh;
+}
+
+.tabcontent {
+  border-left: .2rem solid var(--color-grey);
+  float: left;
+  padding: 1.5rem;
+  width: 70%;
+}
+
+footer p {
+  display: flex;
+  align-items: center;
+}
+
+footer p a {
+  margin: 0 .5rem;
+}
+
+footer img {
+  padding-left: .5rem;
+}
