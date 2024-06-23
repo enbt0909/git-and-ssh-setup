@@ -35,15 +35,20 @@
 
         <div id="sshGenerate" class="tabcontent">
           <h3>SSH-Schlüssel generieren:</h3>
-          <p>
-            - Öffnen Sie ein Terminal. - Geben Sie den Befehl `ssh-keygen -t rsa
-            -b 4096 -C "Ihre_Email@example.com"` oder `ssh-keygen -t ed25519 -C
-            "Ihre_Email@example.com"` ein, ersetzen Sie dabei
-            `"Ihre_Email@example.com"` mit Ihrer E-Mail-Adresse, die mit Ihrem
+            <p>- Öffnen Sie ein Terminal und geben Sie den Befehl.</p> 
+             <p class="keygen">
+               ssh-keygen -t rsa -b 4096 -C "Ihre_Email@example.com"
+             </p>
+             oder 
+             <p class="keygen">
+               ssh-keygen -t ed25519 -C
+                           "Ihre_Email@example.com"`
+             </p> ein, ersetzen Sie dabei
+            <p class="keygen">`"Ihre_Email@example.com"`</p> mit Ihrer E-Mail-Adresse, die mit Ihrem
             GitHub-Konto verknüpft ist. - Folgen Sie den Anweisungen, um den
             Schlüssel zu generieren. Sie können eine Passphrase hinzufügen oder
             einfach Enter drücken, um keine zu setzen.
-          </p>
+          <!-- </p> -->
         </div>
 
         <div id="sshAgent" class="tabcontent">

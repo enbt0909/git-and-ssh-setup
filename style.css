@@ -8,7 +8,10 @@
   --color-grey: #ccc;
   --color-black: black;
   --color-light-grey: #ddd;
+  /* --color-orange: #ff8c00; */
+  --border-color: #300A24;
 }
+
 *,
 *::before,
 *::after {
@@ -20,7 +23,7 @@
 body {
   height: 100%;
   font-family: "Lato", sans-serif;
-  font-size: calc(var(--font-size) * 1.6);
+  font-size: calc(var(--font-size) * 1.8);
   background: var(--bg-color);
 }
 
@@ -34,13 +37,6 @@ footer {
   font-size: calc(var(--font-size) * 2);
   color: var(--color-light-grey);
   background: var(--color-blue-dark);
-}
-
-@media (max-width: 76.8rem) {
-  header,
-  footer {
-    font-size: calc(var(--font-size) * 1.5);
-  }
 }
 
 h2 {
@@ -103,6 +99,7 @@ main {
 .tab,
 .tabcontent {
   min-height: 50vh;
+  border: none;
 }
 
 .tabcontent {
@@ -110,8 +107,21 @@ main {
   float: left;
   padding: 1.5rem;
   width: 70%;
+  color: var(--color-light-grey);
+  background: var(--border-color);
 }
 
+.tabcontent h3 {
+  color: var(--color-blue-dark);
+}
+.keygen {
+  width: max-content;
+  padding: 1rem;
+  border-radius: .6rem;
+  color: var(--color-light-grey);
+  background: var(--color-black);
+}
+/* Footer */
 footer p {
   display: flex;
   align-items: center;
@@ -123,4 +133,11 @@ footer p a {
 
 footer img {
   padding-left: .5rem;
+}
+
+@media (max-width: 76.8rem) {
+  header,
+  footer {
+    font-size: calc(var(--font-size) * 1.5);
+  }
 }
